@@ -9,6 +9,11 @@ def buildDict(sent_file):
     sent_file.seek(0)
     return scores
 
+def sentimentScore(word, dict):
+    if word in dict:
+        return dict[word];
+    return 0
+
 def hw():
     print 'Hello, world!'
 
