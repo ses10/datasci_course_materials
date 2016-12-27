@@ -1,4 +1,5 @@
 import sys
+import json
 
 def buildDict(sent_file):
     scores = {}
@@ -14,6 +15,21 @@ def sentimentScore(word, dict):
         return dict[word];
     return 0
 
+#read each line in tweets file and computer total
+#sentiment score for each tweet
+def computeSentiments(tweet_file, dict):
+    for line in tweet_file:
+        jsn = json.loads(line)
+        tweet = jsn['text'].split()
+        score = 0
+
+        for word in tweet:
+            score += sentimentScore(word, dict)
+
+        print(score)
+
+    tweet_file.seek(0)
+
 def hw():
     print 'Hello, world!'
 
@@ -27,8 +43,8 @@ def main():
 
     sentiments = buildDict(sent_file)
 
-    lines(sent_file)
-    lines(tweet_file)
+    computeSentiments(tweet_file, sentiments)
+
 
 if __name__ == '__main__':
     main()
