@@ -22,9 +22,9 @@ def computerNewTerm(tweet_file, dict):
                 unknowns[word] = None
 
         if len(scores) == 0:
-            avg = 0
+            avg = 0.0
         else:
-            avg = sum(scores) / len(scores)
+            avg = float(sum(scores)) / float(len(scores))
 
         for key in unknowns:
             unknowns[key] = avg
